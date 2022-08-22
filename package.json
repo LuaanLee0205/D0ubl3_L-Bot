@@ -1,0 +1,25 @@
+{
+	"name": "D0ubl3_L-Bot",
+	"version": "1.0.0",
+	"description": "A bot discord for Lien Minh Tau Hai server!",
+	"main": "index.js",
+	"author": "Luaan Lee <levanluan0205@outlook.com>",
+	"license": "MIT",
+	"scripts": {
+		"lint": "eslint .",
+		"dev": "node deploy-commands.js && nodemon index.js"
+	},
+	"dependencies": {
+		"@discordjs/rest": "^1.1.0",
+		"dayjs": "^1.11.5",
+		"discord-api-types": "^0.37.4",
+		"discord.js": "^14.3.0",
+		"dotenv": "^16.0.1",
+		"pino": "^7.0.0-rc.9",
+		"sequelize": "^6.21.4"
+	},
+	"devDependencies": {
+		"eslint": "^8.22.0",
+		"nodemon": "^2.0.19"
+	}
+}
