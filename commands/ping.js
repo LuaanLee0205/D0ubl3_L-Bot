@@ -9,7 +9,6 @@ module.exports = {
 				.setLabel('Primary')
 				.setStyle(ButtonStyle.Primary)
 				.setDisabled(true)
-				.setEmoji('123456789012345678')
 		);
 		const embed = new EmbedBuilder()
 			.setColor(0x0099ff)

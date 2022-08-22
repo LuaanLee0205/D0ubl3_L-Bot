@@ -1,20 +1,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-// const Sequelize = require('sequelize');
 require('dotenv').config();
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
-
-// const sequelize = new Sequelize('database', 'user', 'password', {
-// 	host: 'localhost',
-// 	dialect: 'sqlite',
-// 	logging: false,
-// 	// SQLite only
-// 	storage: 'database.sqlite',
-// });
 
 // read commands for bot from commands folder
 const commandsPath = path.join(__dirname, 'commands');

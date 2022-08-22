@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"lint": "eslint .",
-		"start": "node deploy-commands.js && nodemon index.js"
+		"start": "node deploy-commands.js && node index.js"
 	},
 	"engines": {
 		"node": "18.7.x"
