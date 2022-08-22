@@ -7,7 +7,10 @@
 	"license": "MIT",
 	"scripts": {
 		"lint": "eslint .",
-		"dev": "node deploy-commands.js && nodemon index.js"
+		"start": "node deploy-commands.js && nodemon index.js"
+	},
+	"engines": {
+		"node": "18.7.x"
 	},
 	"dependencies": {
 		"@discordjs/rest": "^1.1.0",
