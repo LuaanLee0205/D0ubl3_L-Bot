@@ -1,11 +1,23 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const db = require('./models');
+const logger = require('pino')();
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 require('dotenv').config();
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
+
+// database sqlite
+db.sequelize
+	.sync({ force: true })
+	.then(() => {
+		logger.info('Synced slqite database');
+	})
+	.catch((err) => {
+		logger.warn(`Failed to sync db: ${err.message}`);
+	});
 
 // read commands for bot from commands folder
 const commandsPath = path.join(__dirname, 'commands');
