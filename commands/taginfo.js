@@ -15,11 +15,11 @@ module.exports = {
 		const tag = await Tags.findOne({ where: { name: tagName } });
 
 		if (tag) {
-			await interaction.reply(
+			return await interaction.reply(
 				`${tagName} was created by ${tag.username} at ${tag.createdAt} and has been used ${tag.usage_count} times.`
 			);
 		}
 
-		await interaction.reply(`Could not find tag: ${tagName}`);
+		return await interaction.reply(`Could not find tag: ${tagName}`);
 	},
 };

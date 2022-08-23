@@ -19,9 +19,9 @@ module.exports = {
 			// equivalent to: UPDATE tags SET usage_count = usage_count + 1 WHERE name = 'tagName';
 			tag.increment('usage_count');
 
-			await interaction.reply(tag.get('description'));
+			return await interaction.reply(tag.get('description'));
 		}
 
-		await interaction.reply(`Could not find tag: ${tagName}`);
+		return await interaction.reply(`Could not find tag: ${tagName}`);
 	},
 };

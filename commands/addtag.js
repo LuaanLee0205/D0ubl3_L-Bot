@@ -22,13 +22,13 @@ module.exports = {
 				username: interaction.user.username,
 			});
 
-			await interaction.reply(`Tag ${tag.name} added.`);
+			return await interaction.reply(`Tag ${tag.name} added.`);
 		} catch (error) {
 			if (error.name === 'SequelizeUniqueConstraintError') {
-				await interaction.reply('That tag already exists.');
+				return await interaction.reply('That tag already exists.');
 			}
 
-			await interaction.reply('Something went wrong with adding a tag.');
+			return await interaction.reply('Something went wrong with adding a tag.');
 		}
 	},
 };

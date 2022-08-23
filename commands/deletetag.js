@@ -14,8 +14,8 @@ module.exports = {
 		// equivalent to: DELETE from tags WHERE name = ?;
 		const rowCount = await Tags.destroy({ where: { name: tagName } });
 
-		if (!rowCount) await interaction.reply('That tag doesn\'t exist');
+		if (!rowCount) return await interaction.reply('That tag doesn\'t exist');
 
-		return interaction.reply('Tag deleted.');
+		return await interaction.reply('Tag deleted.');
 	},
 };

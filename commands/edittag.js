@@ -18,9 +18,9 @@ module.exports = {
 		const affectedRows = await Tags.update({ description: tagDescription }, { where: { name: tagName } });
 
 		if (affectedRows > 0) {
-			await interaction.reply(`Tag ${tagName} was edited.`);
+			return await interaction.reply(`Tag ${tagName} was edited.`);
 		}
 
-		await interaction.reply(`Could not find a tag with name ${tagName}.`);
+		return await interaction.reply(`Could not find a tag with name ${tagName}.`);
 	},
 };

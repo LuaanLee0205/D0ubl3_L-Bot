@@ -11,6 +11,6 @@ module.exports = {
 		const tagList = await Tags.findAll({ attributes: ['name'] });
 		const tagString = tagList.map((t) => t.name).join(', ') || 'No tags set.';
 
-		await interaction.reply(`List of tags: ${tagString}`);
+		return await interaction.reply(`List of tags: ${tagString}`);
 	},
 };
