@@ -1,1 +1,1 @@
-worker: node deploy-commands.js && node index.js --trace-deprecation
+worker: node -r dotenv/config index.js --trace-deprecation
