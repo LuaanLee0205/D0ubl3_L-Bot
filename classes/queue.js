@@ -19,7 +19,7 @@ class Queue {
 		this.queueLock = false;
 		this.readyLock = false;
 
-		this.textChannel = this.message.channel;
+		this.textChannel = message.channel;
 		this.player = createAudioPlayer({ behaviors: { noSubscriber: NoSubscriberBehavior.Play } });
 		this.connection.subscribe(this.player);
 
@@ -136,12 +136,12 @@ class Queue {
 	}
 
 	async sendPlayingMessage(newState) {
-		const song = (newState.resource).metadata;
+		const song = newState.resource.metadata;
 
 		let playingMessage;
 
 		try {
-			playingMessage = await this.textChannel.send((newState.resource).metadata.startMessage());
+			playingMessage = await this.textChannel.send(newState.resource.metadata.startMessage());
 
 			await playingMessage.react('⏭');
 			await playingMessage.react('⏯');
@@ -168,7 +168,7 @@ class Queue {
 			if (!this.songs) return;
 
 			const member = await playingMessage.guild.members.fetch(user);
-
+			console.log(reaction);
 			switch (reaction.emoji.name) {
 			case '⏭':
 				reaction.users.remove(user).catch(logger.error);

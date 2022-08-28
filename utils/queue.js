@@ -1,5 +1,5 @@
 module.exports = {
 	canModifyQueue: (member) => {
-		member.voice.channelId === member.guild.me.voice.channelId;
+		return member.voice.channelId == member.guild.members.me.voice.channelId;
 	},
 };
