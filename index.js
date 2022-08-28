@@ -13,6 +13,7 @@ const client = new Client({
 });
 client.commands = new Collection();
 client.queues = new Collection();
+client.prefix = process.env.PREFIX;
 
 require('./handlers/commandHandler')(client);
 require('./handlers/eventHandler')(client);
