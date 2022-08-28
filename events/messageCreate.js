@@ -1,3 +1,5 @@
+const { logger } = require('../utils/logger');
+
 module.exports = {
 	name: 'messageCreate',
 	once: false,
@@ -18,5 +20,6 @@ module.exports = {
 		const command = client.commands.get(cmd);
 		if (!command) message.reply('Invalid command or we do not support');
 		command.execute(client, message, args);
+		logger.info(`${command.name} was executed successfully`);
 	},
 };
