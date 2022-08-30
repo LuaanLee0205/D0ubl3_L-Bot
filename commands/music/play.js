@@ -10,17 +10,17 @@ module.exports = {
 	description: 'Plays audio from YouTube or Soundcloud',
 	execute: async (client, message, args) => {
 		const { channel } = message.member.voice;
-		if (!channel) message.reply('Please join to a voice channel first');
+		if (!channel) return await message.reply('Please join to a voice channel first');
 
 		const queue = client.queues.get(message.guild.id);
 
 		if (queue && channel.id !== queue.connection.joinConfig.channelId) {
-			return message
+			return await message
 				.reply(`You must be in the same channel as ${client.user.username}`)
 				.catch(logger.error);
 		}
 
-		if (!args.length) return message.reply(`Usage: ${client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`).catch(logger.error);
+		if (!args.length) return await message.reply(`Usage: ${client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`).catch(logger.error);
 
 		const url = args[0];
 
@@ -38,7 +38,7 @@ module.exports = {
 			song = await Song.from(url, args.join(' '));
 		} catch (error) {
 			logger.error(error);
-			return message.reply('There was an error executing that command.').catch(logger.error);
+			return await message.reply('There was an error executing that command.').catch(logger.error);
 		} finally {
 			await loadingReply.delete();
 		}
@@ -46,7 +46,7 @@ module.exports = {
 		if (queue) {
 			queue.songs.push(song);
 
-			return message
+			return await message
 				.reply(`✅ **${song.title}** has been added to the queue by <@${message.author}>`)
 				.catch(logger.error);
 		}

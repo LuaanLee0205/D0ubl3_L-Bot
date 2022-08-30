@@ -9,7 +9,7 @@ module.exports = {
 	execute: async (client, message, args) => {
 		const queue = client.queues.get(message.guild.id);
 
-		if (!queue || !queue.songs.length) return message.reply('There is nothing playing.').catch(logger.error);
+		if (!queue || !queue.songs.length) return await message.reply('There is nothing playing.').catch(logger.error);
 
 		let lyrics = null;
 		const title = queue.songs[0].title;
@@ -29,6 +29,6 @@ module.exports = {
 
 		if (lyricsEmbed.data.description.length >= 2048) { lyricsEmbed.data.description = `${lyricsEmbed.data.description.substr(0, 2045)}...`; }
 
-		return message.reply({ embeds: [lyricsEmbed] }).catch(logger.error);
+		return await message.reply({ embeds: [lyricsEmbed] }).catch(logger.error);
 	},
 };
